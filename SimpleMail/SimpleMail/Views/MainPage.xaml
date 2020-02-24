@@ -7,11 +7,14 @@
              x:Class="SimpleMail.Views.MainPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name ="label_test"  Text="Main Menu!"
+            <Label x:Name="label_test"  Text="Main Menu!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <Button Text="Send Email" Clicked="Send_Clicked" />
-                <Button Text="Logout" Clicked="Logout_Clicked" />
+            <Button Text="View Emails" Clicked="View_Clicked" />
+            <Button Text="Send Email" Clicked="Send_Clicked" />
+            <Button Text="Contacts" Clicked="Contacts_Clicked" />
+            <Button Text="Logout" Clicked="Logout_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+    

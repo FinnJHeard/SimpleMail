@@ -6,26 +6,30 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SimpleMail.Models;
 
 namespace SimpleMail.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SendAddress : ContentPage
     {
-        public SendAddress()
+        Email test;
+
+        public SendAddress(Email test)
         {
+            this.test = test;
             InitializeComponent();
         }
 
         async void Back_Clicked(object sender, EventArgs e)
         {
-            
             await Navigation.PopAsync();
         }
 
         async void Continue_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SendBody());
+            test.recipientAddress = Recipient.Text;
+            await Navigation.PushAsync(new SendBody(test));
         }
     }
 }

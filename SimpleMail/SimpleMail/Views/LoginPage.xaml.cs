@@ -15,7 +15,6 @@ namespace SimpleMail.Views
     {
         public User current_user { get; set; }
 
-
         public LoginPage()
         {
             InitializeComponent();
@@ -28,7 +27,7 @@ namespace SimpleMail.Views
             //Create new user
             current_user = new User(Email.Text);
 
-            await Navigation.PushAsync(new MainPage());
+            await Navigation.PushAsync(new MainPage(current_user));
         }
     }
 }

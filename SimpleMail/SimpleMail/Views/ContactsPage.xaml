@@ -4,15 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SimpleMail.Views.LoginPage">
+             x:Class="SimpleMail.Views.ContactsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to SimpleMail!"
+            <Label Text="Contacts"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="Email" Placeholder="Email Address" />
-            <Entry IsPassword="true"  Placeholder="Password" />
-            <Button Text="Login" Clicked="Login_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

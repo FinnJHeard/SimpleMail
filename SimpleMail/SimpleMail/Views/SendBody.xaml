@@ -10,7 +10,7 @@
             <Label Text="What would you like to say?"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Type your message here" />
+            <Editor x:Name="Body" Placeholder ="Please type your email here" />
             <Button Text="Back" Clicked="Back_Clicked" />
             <Button Text="Send" Clicked="Send_Clicked"/>
         </StackLayout>

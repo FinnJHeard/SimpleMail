@@ -28,8 +28,8 @@ namespace SimpleMail.Views
 
             var item = new Item
             {
-                Text = "Item 1",
-                Description = "This is an item description."
+                text = "Item 1",
+                description = "This is an item description."
             };
 
             viewModel = new ItemDetailViewModel(item);
