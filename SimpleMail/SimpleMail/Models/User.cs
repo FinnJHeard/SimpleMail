@@ -6,10 +6,12 @@ namespace SimpleMail.Models
     {
         //public int id { get; set; }
         public string email { get; set; }
+        public string password { get; set; }
 
-        public User(String Email)
+        public User(String email, String password)
         {
-            this.email = Email;
+            this.email = email;
+            this.password = password;
             //this.id = id;
         }
     }

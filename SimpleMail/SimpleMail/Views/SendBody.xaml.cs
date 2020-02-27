@@ -13,12 +13,14 @@ namespace SimpleMail.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SendBody : ContentPage
     {
-        public Email test;
+        User current_user;
+        Email emailToSend;
 
-        public SendBody(Email test)
+        public SendBody(User current_user, Email emailToSend)
         {
             InitializeComponent();
-            this.test = test;
+            this.current_user = current_user;
+            this.emailToSend = emailToSend;
         }
 
         async void Back_Clicked(object sender, EventArgs e)
@@ -29,7 +31,14 @@ namespace SimpleMail.Views
         async void Send_Clicked(object sender, EventArgs e)
         {
             //Send the email
-            test.body = Body.Text;
+            emailToSend.body = Body.Text;
+
+            emailToSend.body = "Dear simple123mail,\n\n How are you? \n\n Yours simple123mail.";
+            emailToSend.subject = "An email!";
+
+            emailToSend.sendMessage(current_user);
+
+
             await Navigation.PopAsync();
             //Woosh sound
         }

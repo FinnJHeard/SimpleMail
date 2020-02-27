@@ -11,7 +11,7 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Entry x:Name="Email" Placeholder="Email Address" />
-            <Entry IsPassword="true"  Placeholder="Password" />
+            <Entry x:Name="Password" IsPassword="true"  Placeholder="Password" />
             <Button Text="Login" Clicked="Login_Clicked" />
         </StackLayout>
     </ContentPage.Content>
