@@ -23,7 +23,7 @@ namespace SimpleMail.Views
 
         async void Login_Clicked(object sender, EventArgs e)
         {
-            //System.Console.WriteLine("DEBUG - login button clicked");
+            Console.WriteLine("DEBUG - login button clicked");
             //Debug.WriteLine("Login clicked");
             //Call check login credentials
             

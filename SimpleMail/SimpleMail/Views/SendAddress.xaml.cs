@@ -31,7 +31,7 @@ namespace SimpleMail.Views
         async void Continue_Clicked(object sender, EventArgs e)
         {
             emailToSend.recipientAddress = Recipient.Text;
-            emailToSend.recipientAddress = "simple123mail@yahoo.com";
+            //emailToSend.recipientAddress = "simple123mail@yahoo.com";
 
             await Navigation.PushAsync(new SendBody(current_user, emailToSend));
         }

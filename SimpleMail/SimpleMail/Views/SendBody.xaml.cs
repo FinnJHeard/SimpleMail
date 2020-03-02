@@ -31,15 +31,19 @@ namespace SimpleMail.Views
         async void Send_Clicked(object sender, EventArgs e)
         {
             //Send the email
+            Console.WriteLine("Send button clicked");
             emailToSend.body = Body.Text;
 
-            emailToSend.body = "Dear simple123mail,\n\n How are you? \n\n Yours simple123mail.";
+            //emailToSend.body = "Dear simple123mail,\n\n How are you? \n\n Yours simple123mail.";
             emailToSend.subject = "An email!";
+            Console.WriteLine("Email init");
 
             emailToSend.sendMessage(current_user);
+            Console.WriteLine("Email sent?");
 
 
             await Navigation.PopAsync();
+            Console.WriteLine("Gone back a page");
             //Woosh sound
         }
     }
