@@ -24,6 +24,12 @@ namespace SimpleMail.Models
             sent = false;
         }
 
+        public Email(string content, string subject)
+        {
+            this.subject = subject;
+            body = content;
+        }
+
         public void sendMessage(User user)
         {
             //Pulled from https://github.com/jstedfast/MailKit for the email API

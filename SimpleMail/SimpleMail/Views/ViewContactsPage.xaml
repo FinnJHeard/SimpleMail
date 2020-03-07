@@ -4,14 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SimpleMail.Views.ContactsPage">
+             x:Class="SimpleMail.Views.ViewContactsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Contacts"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="View Contacts" Clicked="View_Clicked" />
-            <Button Text="Add Contacts" Clicked="Add_Clicked" />
-        </StackLayout>
+        <ListView x:Name="contactsListView"/>
     </ContentPage.Content>
 </ContentPage>
