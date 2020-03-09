@@ -16,5 +16,16 @@ namespace SimpleMail.Views
         {
             InitializeComponent();
         }
+
+        async void View_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ViewContactsPage());
+        }
+
+        async void Add_Clicked(object sender, EventArgs e)
+        {
+            //Push to add contacts page
+            await Navigation.PopAsync();
+        }
     }
 }
