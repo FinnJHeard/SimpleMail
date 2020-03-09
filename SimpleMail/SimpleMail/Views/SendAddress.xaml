@@ -10,6 +10,7 @@
             <Label Text="Send email to who?"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="Recipient" Placeholder ="Recipient" />
             <Button Text="Back" Clicked="Back_Clicked" />
             <Button Text="Continue" Clicked="Continue_Clicked" />
         </StackLayout>

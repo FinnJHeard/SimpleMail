@@ -21,8 +21,8 @@ namespace SimpleMail.Views
 
             Item = new Item
             {
-                Text = "Item name",
-                Description = "This is an item description."
+                text = "Item name",
+                description = "This is an item description."
             };
 
             BindingContext = this;
