@@ -13,11 +13,13 @@ namespace SimpleMail.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SendAddress : ContentPage
     {
-        Email test;
+        User current_user;
+        Email emailToSend;
 
-        public SendAddress(Email test)
+        public SendAddress(User current_user, Email emailToSend)
         {
-            this.test = test;
+            this.current_user = current_user;
+            this.emailToSend = emailToSend;
             InitializeComponent();
         }
 
@@ -28,8 +30,10 @@ namespace SimpleMail.Views
 
         async void Continue_Clicked(object sender, EventArgs e)
         {
-            test.recipientAddress = Recipient.Text;
-            await Navigation.PushAsync(new SendBody(test));
+            emailToSend.recipientAddress = Recipient.Text;
+            //emailToSend.recipientAddress = "simple123mail@yahoo.com";
+
+            await Navigation.PushAsync(new SendBody(current_user, emailToSend));
         }
     }
 }
