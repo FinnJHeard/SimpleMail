@@ -20,9 +20,12 @@ namespace SimpleMail.Views
     public partial class InboxPage : ContentPage
     {
 
-        public InboxPage()
+        User current_user;
+
+        public InboxPage(User current_user) 
         {
             InitializeComponent();
+            this.current_user = current_user;
         }
 
         protected override void OnAppearing()
@@ -37,23 +40,21 @@ namespace SimpleMail.Views
         {
             int maxCount = 10;
 
-            using (var emailClient = new Pop3Client())
+            using (var emailClient = current_user.receivingClient)
             {
-                emailClient.Connect("pop.gmail.com", 995, true);
-                //emailClient.AuthenticationMechanisms.Remove("XOAUTH2");
-                emailClient.Authenticate("simple321mail", "ipgroup123");
 
                 List<Email> emails = new List<Email>();
                 List<String> emailContents = new List<String>();
                 for (int i = 0; i < maxCount && i < emailClient.Count; i++)
                 {
                     var message = emailClient.GetMessage(i);
-                    var emailMessage = new Email(!string.IsNullOrEmpty(message.HtmlBody) ? message.HtmlBody : message.TextBody, message.Subject);
-                    
+                    var emailMessage = new Email(message.TextBody, message.Subject);
+
                     //Figure out how to pull the addresses from the API
                     emailMessage.recipientAddress = null;  
                     emailMessage.senderAddress = null;
 
+                    //Only displaying the body of the email currently (UI input pls)
                     //emails.Add(emailMessage);
                     emailContents.Add(emailMessage.body);
                 }
@@ -62,7 +63,6 @@ namespace SimpleMail.Views
             }
 
         }
-
 
 
     }
