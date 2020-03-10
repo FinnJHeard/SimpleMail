@@ -12,8 +12,6 @@ namespace SimpleMail
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>(); // Mock data source for template's item page
             MainPage = new AppShell();
         }
 

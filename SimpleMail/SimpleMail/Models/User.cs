@@ -16,23 +16,22 @@ namespace SimpleMail.Models
         public Pop3Client receivingClient { get; set; }
         public bool valid { get; set; }
 
-        public void authenticate()
+        public async void authenticate()
         {
-            //Add string manipulation to remove @gmail.com
-            sendingClient.Connect("smtp.gmail.com", 465, true);
-            sendingClient.Authenticate(StrUtil.removeDomain(email), password);
-            receivingClient.Connect("pop.gmail.com", 995, true);
-            receivingClient.Authenticate(StrUtil.removeDomain(email), password);
+            await sendingClient.ConnectAsync("smtp.gmail.com", 465, true);
+            await sendingClient.AuthenticateAsync(StrUtil.removeDomain(email), password);
+            await receivingClient.ConnectAsync("pop.gmail.com", 995, true);
+            await receivingClient.AuthenticateAsync(StrUtil.removeDomain(email), password);
         }
 
-        public User(String email, String password)
+        public async User(String email, String password)
         {
             valid = false;
             this.email = email;
             this.password = password;
             sendingClient = new SmtpClient();
             receivingClient = new Pop3Client();
-            this.authenticate();
+            await this.authenticate();
             valid = true;
             //this.id = id;
         }

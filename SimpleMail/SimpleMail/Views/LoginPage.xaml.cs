@@ -24,12 +24,21 @@ namespace SimpleMail.Views
 
         async void Login_Clicked(object sender, EventArgs e)
         {
-            //Call check login credentials
-           
-            //Create new user
-            current_user = new User(Email.Text, Password.Text);
-            
-            //Do authentification (inside user object)
+			while(true)
+			{
+				//Call check login credentials
+				try
+				{
+				//Create new user
+					current_user = await new User(Email.Text, Password.Text);
+					break;
+				}
+				catch(Exception e)
+				{
+				//Do authentification (inside user object)
+					
+				}
+			}
 
             await Navigation.PushAsync(new MainPage(current_user));
         }
