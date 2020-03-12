@@ -6,13 +6,28 @@
              mc:Ignorable="d"
              x:Class="SimpleMail.Views.SendAddress">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Send email to who?"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="Recipient" Placeholder ="Recipient" />
-            <Button Text="Back" Clicked="Back_Clicked" />
-            <Button Text="Continue" Clicked="Continue_Clicked" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Text="Send email to who?" VerticalOptions="Center" FontSize="40"  />
+            <Entry Grid.Row="1" Grid.Column="0" x:Name="Recipient" Placeholder ="Recipient" FontSize="40" />
+            <Button Grid.Row="2" Grid.Column="0" Text="Back" Clicked="Back_Clicked" FontSize="40" />
+            <Button Grid.Row="3" Grid.Column="0" Text="Continue" Clicked="Continue_Clicked" FontSize="40" />
+
+            <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                   Text="Please enter the email address of who you would like to send this email to" FontSize="30"/>
+            <Label Grid.Row="3" Grid.Column="1" VerticalOptions="Center"
+                   Text="Press the continue button to move to the next page" FontSize ="30"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

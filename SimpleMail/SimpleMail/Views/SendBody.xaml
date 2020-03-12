@@ -6,13 +6,27 @@
              mc:Ignorable="d"
              x:Class="SimpleMail.Views.SendBody">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="What would you like to say?"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Editor x:Name="Body" Placeholder ="Please type your email here" />
-            <Button Text="Back" Clicked="Back_Clicked" />
-            <Button Text="Send" Clicked="Send_Clicked"/>
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Text="What would you like to say?" VerticalOptions="Center" FontSize="40"/>
+            <Editor Grid.Row="1" Grid.Column="0" x:Name="Body" Placeholder ="Please type your email here" FontSize="40" />
+            <Button Grid.Row="2" Grid.Column="0" Text="Back" Clicked="Back_Clicked" FontSize="40" />
+            <Button Grid.Row="3" Grid.Column="0" Text="Send" Clicked="Send_Clicked" FontSize="40"/>
+
+            <Label Grid.Row="1" Grid.Column="1"
+                   Text="Please type what you would like to say in your email" FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Row="3" Grid.Column="1" 
+                   Text="Press the continue button to send your email" FontSize="30" VerticalOptions="Center"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -6,15 +6,31 @@
              mc:Ignorable="d"
              x:Class="SimpleMail.Views.MainPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="label_test"  Text="Main Menu!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="View Emails" Clicked="View_Clicked" />
-            <Button Text="Send Email" Clicked="Send_Clicked" />
-            <Button Text="Contacts" Clicked="Contacts_Clicked" />
-            <Button Text="Logout" Clicked="Logout_Clicked" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="label_test"  Text="Main Menu"/>
+            <Button Grid.Column="0" Grid.Row="1" Text="View Emails" Clicked="View_Clicked" FontSize="30" />
+            <Button Grid.Column="0" Grid.Row="0" Text="Send Email" Clicked="Send_Clicked" FontSize="30" />
+            <Button Grid.Column="0" Grid.Row="2" Text="Contacts" Clicked="Contacts_Clicked" FontSize="30" />
+            <Button Grid.Column="0" Grid.Row="3" Text="Logout" Clicked="Logout_Clicked" FontSize="30" />
+
+            <Label Grid.Column="1" Grid.Row="0" Text="Main Menu" FontSize="60" FontAttributes="Bold"/>
+            <Label Grid.Column="1" Grid.Row="1" FontSize="30"
+                   Text="Tap the view emails button to see a list of emails that you have received recently" VerticalOptions="Center"/>
+            <Label Grid.Column="1" Grid.Row="0" Text="Tap the send email button to write a new email" FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Column="1" Grid.Row="2" Text="Tap the contacts button to see your contacts list" FontSize="30" VerticalOptions="Center"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
     
