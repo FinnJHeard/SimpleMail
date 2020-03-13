@@ -32,11 +32,11 @@ namespace SimpleMail.Views
         {
             base.OnAppearing();
 
-            emailsListView.ItemsSource = get_Emails();
+            emailsListView.ItemsSource = Get_Emails();
 
         }
 
-        private List<String> get_Emails()
+        private List<String> Get_Emails()
         {
             int maxCount = 10;
 

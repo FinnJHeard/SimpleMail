@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SimpleMail.Views.AddContactPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <Entry Grid.Row="1" Grid.Column="0" x:Name="FirstName" Placeholder ="First Name" FontSize="40" Grid.ColumnSpan="2" />
+            <Entry Grid.Row="2" Grid.Column="0" x:Name="LastName" Placeholder ="Last Name" FontSize="40" Grid.ColumnSpan="2" />
+            <Entry Grid.Row="3" Grid.Column="0" x:Name="EmailAddress" Placeholder ="Email Address" FontSize="40" Grid.ColumnSpan="2" />
+            <Button Grid.Row="4" Grid.Column="0" BackgroundColor="LightPink" Text="Back" Clicked="Back_Clicked" FontSize="30" />
+            <Button Grid.Row="4" Grid.Column="1" BackgroundColor="SpringGreen" Text="Confirm" Clicked="Confirm_Clicked" FontSize="30" />
+
+            <Label Grid.Row="0" Grid.Column="2" Text="New Contact" FontSize="60" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="1" Grid.Column="2" TextColor="Black" 
+                   Text="Fill in the first name of the new contact" FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Row="2" Grid.Column="2" TextColor="Black" 
+                   Text="Fill in the last name of the new contact" FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Row="3" Grid.Column="2" TextColor="Black" 
+                   Text="Fill in the email address of the new contact" FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Row="4" Grid.Column="2" TextColor="Black" 
+                   Text="Press the confirm button to add this contact" FontSize="30" VerticalOptions="Center"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -14,24 +14,26 @@
                 <RowDefinition Height="0.4*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-    
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="400"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="" BackgroundColor="PowderBlue" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <Image Source="simpleMail.png" BackgroundColor="LightSkyBlue" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
 
-            <Entry Grid.Column="0" Grid.Row="1" x:Name="Email" Placeholder="Email Address" FontSize="40" Grid.ColumnSpan="2"/>
-            <Entry Grid.Column ="0" Grid.Row="2" x:Name="Password" IsPassword="true"  Placeholder="Password" FontSize="40" Grid.ColumnSpan="2" />
+            <Entry Grid.Column="0" Grid.Row="1" x:Name="Email" Placeholder="Email Address"
+                   TextColor="Black" FontSize="40" Grid.ColumnSpan="2"/>
+            <Entry Grid.Column ="0" Grid.Row="2" x:Name="Password" IsPassword="true" 
+                   TextColor="Black" Placeholder="Password" FontSize="40" Grid.ColumnSpan="2" />
             
-            <Button Grid.Column ="0" Grid.Row="4" Text="Login" FontSize="30" Clicked="Login_Clicked" Grid.ColumnSpan="2" />
+            <Button BackgroundColor="SpringGreen" Grid.Column ="0" Grid.Row="4" Text="Login" FontSize="30" TextColor="Black" Clicked="Login_Clicked" Grid.ColumnSpan="2" />
 
-            <Label Grid.Column="2" Grid.Row="0" Text="Login" FontSize="60" FontAttributes="Bold"/>
-            <Label Grid.Column="2" Grid.Row="1" Text="Please enter your email address in the first box" FontSize="30" VerticalOptions="Center"/>
-            <Label Grid.Column="2" Grid.Row="2" Text="Then enter your password in the second box" FontSize="30" VerticalOptions="Center"/>
-            <Label Grid.Column="2" Grid.Row="4" Text="Press the login button to move to the next page" FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Column="2" Grid.Row="0" Text="Login" FontSize="60" FontAttributes="Bold" TextColor="Black"/>
+            <Label Grid.Column="2" Grid.Row="1" Text="Please enter your email address in the first box" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
+            <Label Grid.Column="2" Grid.Row="2" Text="Then enter your password in the second box" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
+            <Label Grid.Column="2" Grid.Row="4" Text="Press the login button to move to the next page" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
 
         </Grid>
     </ContentPage.Content>

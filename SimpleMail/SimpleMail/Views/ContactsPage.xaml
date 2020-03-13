@@ -6,12 +6,25 @@
              mc:Ignorable="d"
              x:Class="SimpleMail.Views.ContactsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Contacts"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="View Contacts" Clicked="View_Clicked" />
-            <Button Text="Add Contacts" Clicked="Add_Clicked" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.2"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="1" TextColor="Black" Text="Contacts" FontSize="60" FontAttributes="Bold"  />
+            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Aqua" Text="View Contacts" FontSize="40" Clicked="View_Clicked" />
+            <Button Grid.Row="2" Grid.Column="0" BackgroundColor="DodgerBlue" Text="Add Contacts" FontSize="40"  Clicked="Add_Clicked" />
+
+            <Label Grid.Row="0" Grid.Column="1" TextColor="Black" 
+                   Text="Press the view button to see your existing contacts" FontSize="30" VerticalOptions="Center" />
+            <Label Grid.Row="2" Grid.Column="1" TextColor="Black"
+                   Text="Press the add button to add a new person to your contacts" FontSize="30" VerticalOptions="Center" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
