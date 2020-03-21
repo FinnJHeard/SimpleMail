@@ -21,25 +21,18 @@ namespace SimpleMail.Views
         User current_user;
         Email email;
 
-        public MainPage(SimpleMail.Models.User current_user)
+        public MainPage(User current_user)
         {
             InitializeComponent();
             this.current_user = current_user;
-            label_test.Text = current_user.email;
+            label_test.Text = "Welcome" + current_user.email + "!";
         }
         
         async void Logout_Clicked(object sender, EventArgs e)
         {
-            //Clearing the stack of pages
-            /*
-            Console.WriteLine(label_test);
-            var existingPages = Navigation.NavigationStack.ToList();
-            foreach(var page in existingPages)
-            {
-                Navigation.RemovePage(page);
-            }
-            */
-            await Navigation.PopAsync();
+            //Disconnect user from both servers to send and receive
+
+            await Navigation.PopAsync(); // Needs to clear navigation stack
         }
 
         async void Send_Clicked(object sender, EventArgs e)
@@ -50,15 +43,12 @@ namespace SimpleMail.Views
 
         async void View_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new InboxPage());
+            await Navigation.PushAsync(new InboxPage(current_user));
         }
 
         async void Contacts_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ContactsPage());
         }
-
-        
-
     }
 }
