@@ -27,7 +27,7 @@ namespace SimpleMail.Views
 			try
 			{
                 current_user = await User.authenticate(Email.Text, Password.Text);
-                Navigation.PushAsync(new MainPage(current_user));
+                await Navigation.PushAsync(new MainPage(current_user));
             }
 			catch(Exception exception)
 			{

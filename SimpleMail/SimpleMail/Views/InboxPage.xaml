@@ -17,9 +17,16 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="400"/>
             </Grid.ColumnDefinitions>
-            
-            <ListView x:Name="emailsListView" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" />
-            
+
+            <ListView x:Name="emailsListView" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" VerticalScrollBarVisibility="Never"
+                ItemTapped="Tapped"
+                ItemSelected="Selected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding subject}" Detail="{Binding body}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
 
         

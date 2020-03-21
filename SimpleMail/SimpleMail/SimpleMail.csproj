@@ -12,6 +12,13 @@
 
   <ItemGroup>
     <Compile Remove="Services\AzureDataStore.cs" />
+    <Compile Remove="Views\Page1.xaml.cs" />
+    <Compile Remove="Views\SendAddress - Copy.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\Page1.xaml" />
+    <EmbeddedResource Remove="Views\SendAddress - Copy.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,6 +62,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ViewContactsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ViewEmailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
