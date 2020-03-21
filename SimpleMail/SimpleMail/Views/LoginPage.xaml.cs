@@ -22,25 +22,17 @@ namespace SimpleMail.Views
             InitializeComponent();
         }
 
-        void Login_Clicked(object sender, EventArgs e)
+        async void Login_Clicked(object sender, EventArgs e)
         {
-			while(true)
+			try
 			{
-				//Call check login credentials
-				try
-				{
-				//Create new user
-					current_user = new User(Email.Text, Password.Text);
-					break;
-				}
-				catch(Exception exception)
-				{
-				//Do authentification (inside user object)
-				
-				}
-			}
-
-            Navigation.PushAsync(new MainPage(current_user));
+                current_user = await User.authenticate(Email.Text, Password.Text);
+                Navigation.PushAsync(new MainPage(current_user));
+            }
+			catch(Exception exception)
+			{
+                await DisplayAlert("Login failed", "Please try again", "OK");
+            }
         }
     }
 }
