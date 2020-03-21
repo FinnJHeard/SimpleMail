@@ -24,14 +24,14 @@ namespace SimpleMail.Models
             await receivingClient.AuthenticateAsync(StrUtil.removeDomain(email), password);
         }
 
-        public async User(String email, String password)
+        public User(String email, String password)
         {
             valid = false;
             this.email = email;
             this.password = password;
             sendingClient = new SmtpClient();
             receivingClient = new Pop3Client();
-            await this.authenticate();
+            this.authenticate();
             valid = true;
             //this.id = id;
         }

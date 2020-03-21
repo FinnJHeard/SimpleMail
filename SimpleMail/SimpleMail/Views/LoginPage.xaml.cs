@@ -22,7 +22,7 @@ namespace SimpleMail.Views
             InitializeComponent();
         }
 
-        async void Login_Clicked(object sender, EventArgs e)
+        void Login_Clicked(object sender, EventArgs e)
         {
 			while(true)
 			{
@@ -30,17 +30,17 @@ namespace SimpleMail.Views
 				try
 				{
 				//Create new user
-					current_user = await new User(Email.Text, Password.Text);
+					current_user = new User(Email.Text, Password.Text);
 					break;
 				}
-				catch(Exception e)
+				catch(Exception exception)
 				{
 				//Do authentification (inside user object)
-					
+				
 				}
 			}
 
-            await Navigation.PushAsync(new MainPage(current_user));
+            Navigation.PushAsync(new MainPage(current_user));
         }
     }
 }

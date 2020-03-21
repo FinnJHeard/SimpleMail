@@ -19,13 +19,13 @@ namespace SimpleMail.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetUsersAsync();
-            listContacts.ItemsSource = await App.Database.GetContactsAsync();
+            //listView.ItemsSource = await App.Database.GetUsersAsync();
+            //listContacts.ItemsSource = await App.Database.GetContactsAsync();
         }
 
         async void OnButtonClicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(emailEntry.Text))
+            /*if (!string.IsNullOrWhiteSpace(emailEntry.Text))
             {
                 await App.Database.SaveUsersAsync(new UserTable
                 {
@@ -44,7 +44,7 @@ namespace SimpleMail.Views
 
                 emailEntry.Text = string.Empty;
                 listContacts.ItemsSource = await App.Database.GetContactsAsync();
-            }
+            }*/
         }
     }
 }
