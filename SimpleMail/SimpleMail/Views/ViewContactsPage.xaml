@@ -6,6 +6,19 @@
              mc:Ignorable="d"
              x:Class="SimpleMail.Views.ViewContactsPage">
     <ContentPage.Content>
-        <ListView x:Name="contactsListView"/>
+        <Grid>
+            <ListView x:Name="contactsListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Title}"
+                              Detail="{Binding Subtitle}"
+                              TextColor="#f35e20"
+                              DetailColor="#503026" />    
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

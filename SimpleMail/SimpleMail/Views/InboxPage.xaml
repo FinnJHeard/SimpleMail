@@ -6,8 +6,12 @@
              mc:Ignorable="d"
              x:Class="SimpleMail.Views.InboxPage">
     <ContentPage.Content>
-        
-        <ListView x:Name="emailsListView"/>
+        <Grid>
+            
+            <ListView x:Name="emailsListView"/>
+            
+        </Grid>
+
         
     </ContentPage.Content>
 </ContentPage>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleMail.Models;
+using SimpleMail.Services;
 using System.Diagnostics;
 
 using Xamarin.Forms;
@@ -23,16 +24,12 @@ namespace SimpleMail.Views
 
         async void Login_Clicked(object sender, EventArgs e)
         {
-            Console.WriteLine("DEBUG - login button clicked");
-            //Debug.WriteLine("Login clicked");
             //Call check login credentials
-            
-
+           
             //Create new user
             current_user = new User(Email.Text, Password.Text);
-
-            current_user.email = "simple123mail@yahoo.com";
-            current_user.password = "ipgroup123";
+            
+            //Do authentification (inside user object)
 
             await Navigation.PushAsync(new MainPage(current_user));
         }
