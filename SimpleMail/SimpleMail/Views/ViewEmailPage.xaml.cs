@@ -25,8 +25,16 @@ namespace SimpleMail.Views
             
             ViewSender.Text = emailToDisplay.senderAddress;
             ViewSubject.Text = emailToDisplay.subject;
-            ViewBody.Text = emailToDisplay.body;
-        
+            var html = new HtmlWebViewSource();
+            if (emailToDisplay.bodyHtml != null)
+            {
+                html.Html = emailToDisplay.bodyHtml;
+            }
+            else
+            {
+                html.Html = "<html><body><p>"+emailToDisplay.body+"</p></body></html>";
+            }
+            webView.Source = html;
         }
 
 

@@ -10,25 +10,60 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.3*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="400"/>
             </Grid.ColumnDefinitions>
 
-            <ListView x:Name="emailsListView" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" VerticalScrollBarVisibility="Never"
-                ItemTapped="Tapped"
-                ItemSelected="Selected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding subject}" Detail="{Binding body}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
+            <RelativeLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <ListView x:Name="emailsListView" ItemsSource="{Binding Items}" VerticalScrollBarVisibility="Never" HasUnevenRows="False" RowHeight="85"
+                    ItemTapped="Tapped"
+                    ItemSelected="Selected"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.35*"/>
+                                        <RowDefinition Height="0.65*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding senderName}" TextColor="Red" FontAttributes="Bold" FontSize="Large"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding subject}" FontSize="Large"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding body}" FontSize="Small"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-        
+                <ActivityIndicator x:Name="spinningWheel"  
+                    IsRunning="{Binding loading}"
+                    IsEnabled="{Binding loading}" 
+                    IsVisible="{Binding loading}"
+                    Color="Blue"  
+                    BackgroundColor="Transparent"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25,Constant=0}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25, Constant=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.5,Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=0}"/>
+            </RelativeLayout>
+
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="LightPink" Text="Back" Clicked="Back_Clicked" FontSize="40" />
+            <Button Grid.Row="0" Grid.Column="1" BackgroundColor="Azure" Text="/\" Command="{Binding UpCommand}" CommandParameter="{Binding inboxPage}" FontSize="40" />
+            <Button Grid.Row="1" Grid.Column="1" BackgroundColor="Azure" Text="\/" Command="{Binding DownCommand}" CommandParameter="{Binding inboxPage}" FontSize="40" />
+
+            <Label Grid.Column="2" Grid.Row="0" Text="View Inbox" FontSize="60" FontAttributes="Bold" TextColor="Black"/>
+            <Label Grid.Column="2" Grid.Row="1" Text="Your most recently recieved emails are shown here" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
+            <Label Grid.Column="2" Grid.Row="2" Text="Press the back button to return to the main menu" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

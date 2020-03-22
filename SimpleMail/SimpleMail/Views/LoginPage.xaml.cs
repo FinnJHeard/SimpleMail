@@ -24,14 +24,44 @@ namespace SimpleMail.Views
 
         async void Login_Clicked(object sender, EventArgs e)
         {
-			try
-			{
-                current_user = await User.authenticate(Email.Text, Password.Text);
-                await Navigation.PushAsync(new MainPage(current_user));
+            bool willSend = true;
+
+            if (Email.Text == null)
+            {
+                willSend = false;
+                await DisplayAlert("Email blank", "Enter an email address.", "OK");
             }
-			catch(Exception exception)
-			{
-                await DisplayAlert("Login failed", "Please try again", "OK");
+
+            if (willSend)
+            {
+                if (!await StrUtil.ValidateAddress(Email.Text))
+                {
+                    willSend = false;
+                    await DisplayAlert("Invalid email format", "Email must be of a valid email address format.", "OK");
+                }
+            }
+
+            if (willSend)
+            {
+                loading.IsRunning = true;
+                loading.IsVisible = true;
+                loading.IsEnabled = true;
+
+                try
+                {
+                    current_user = await User.authenticate(Email.Text, Password.Text);
+                    loading.IsRunning = false;
+                    loading.IsVisible = false;
+                    loading.IsEnabled = false;
+                    await Navigation.PushAsync(new MainPage(current_user));
+                }
+                catch
+                {
+                    loading.IsRunning = false;
+                    loading.IsVisible = false;
+                    loading.IsEnabled = false;
+                    await DisplayAlert("Login failed", "Please try again", "OK");
+                }
             }
         }
     }

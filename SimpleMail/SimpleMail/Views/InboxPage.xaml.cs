@@ -9,6 +9,7 @@ using MailKit;
 using MailKit.Net.Smtp;
 using MailKit.Net.Pop3;
 using SimpleMail.Models;
+using SimpleMail.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -28,14 +29,7 @@ namespace SimpleMail.Views
         {
             InitializeComponent();
             this.current_user = current_user;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            emailsListView.ItemsSource = Get_Emails();
-
+            BindingContext = new InboxViewModel(current_user);
         }
 
         private void Selected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
@@ -52,43 +46,9 @@ namespace SimpleMail.Views
             }
         }
 
-        private List<Email> Get_Emails()
+        async void Back_Clicked(object sender, EventArgs e)
         {
-            int maxCount = 10;
-
-            using (var emailClient = current_user.receivingClient)
-            {
-
-                List<Email> emails = new List<Email>();
-                //List<String> emailContents = new List<String>();
-                for (int i = 0; i < maxCount && i < emailClient.Count; i++)  //CRASHS if view emails is used twice
-                {
-                    var message = emailClient.GetMessage(i);
-                    var emailMessage = new Email(message.TextBody, message.Subject);
-
-                    //Gets only the FIRST email ADDRESS in the list of senders and recievers
-                    foreach (var mailbox in message.From.Mailboxes)
-                    {
-                        emailMessage.senderAddress = mailbox.Address; //mailbox.Name for sender's name
-                        break; //loop and store as list for multiple addresses?
-                    }
-                    foreach (var mailbox in message.To.Mailboxes)
-                    {
-                        emailMessage.recipientAddress = mailbox.Address; //mailbox.Name for recipient name
-                        break;
-                    } 
-                    
-
-                    //Only displaying the body of the email currently (UI input pls)
-                    emails.Add(emailMessage);
-                    //emailContents.Add(emailMessage.body);
-                }
-                return emails;
-                //return emailContents;
-            }
-
+            await Navigation.PopAsync();
         }
-
-
     }
 }

@@ -8,10 +8,10 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="0.6*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="0.1*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -20,7 +20,6 @@
 
             <Label Grid.Row="0" Grid.Column="0" x:Name="ViewSender" VerticalOptions="Center" FontSize="40"  />
             <Label Grid.Row="1" Grid.Column="0" x:Name="ViewSubject" VerticalOptions="Center" FontSize="40"  />
-            <Label Grid.Row="2" Grid.Column="0" x:Name="ViewBody" VerticalOptions="Center" FontSize="40"  />
             <Button Grid.Row="3" Grid.Column="0" BackgroundColor="LightPink" Text="Back" Clicked="Back_Clicked" FontSize="40" />
 
             <Label Grid.Row="0" Grid.Column="1" Text="View Email" FontSize="60" FontAttributes="Bold" TextColor="Black" />
@@ -28,7 +27,9 @@
                    Text="This is the email the person has sent you" FontSize="30"/>
             <Label Grid.Row="3" Grid.Column="1" VerticalOptions="Center" TextColor="Black"
                    Text="Press the continue button to move to the next page" FontSize ="30"/>
-
+            <ScrollView x:Name="scrollView" Grid.Row="2" Grid.Column="0" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                <WebView x:Name="webView" HeightRequest="3000"/>
+            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

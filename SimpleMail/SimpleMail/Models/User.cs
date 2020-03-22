@@ -13,8 +13,6 @@ namespace SimpleMail.Models
         //public int id { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public SmtpClient sendingClient { get; set; }
-        public Pop3Client receivingClient { get; set; }
         //public bool valid { get; set; }
 
         async public static Task<User> authenticate(String email, String password)
@@ -27,17 +25,38 @@ namespace SimpleMail.Models
             await receivingClient.ConnectAsync("pop.gmail.com", 995, true);
             await receivingClient.AuthenticateAsync(StrUtil.removeDomain(email), password);
 
-            return new User(email, password, sendingClient, receivingClient);
+            sendingClient.Disconnect(true);
+            receivingClient.Disconnect(true);
+
+            return new User(email, password);
+        }
+
+        async public Task<SmtpClient> getSendingClient()
+        {
+            SmtpClient sendingClient = new SmtpClient();
+
+            await sendingClient.ConnectAsync("smtp.gmail.com", 465, true);
+            await sendingClient.AuthenticateAsync(StrUtil.removeDomain(email), password);
+
+            return sendingClient;
+        }
+
+        async public Task<Pop3Client> getReceivingClient()
+        {
+            Pop3Client receivingClient = new Pop3Client();
+
+            await receivingClient.ConnectAsync("pop.gmail.com", 995, true);
+            await receivingClient.AuthenticateAsync(StrUtil.removeDomain(email), password);
+
+            return receivingClient;
         }
 
         //public async Task<async> User(String email, String password)
-        public User(String email, String password, SmtpClient sendingClient, Pop3Client receivingClient)
+        public User(String email, String password)
         {
             //this.id = id;
             this.email = email;
             this.password = password;
-            this.sendingClient = sendingClient;
-            this.receivingClient = receivingClient;
             //await this.authenticate();
 
         }
