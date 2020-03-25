@@ -16,6 +16,8 @@ namespace SimpleMail.Services
             _database.CreateTableAsync<ContactTable>().Wait();
         }
 
+
+        //User Table
         public Task<List<UserTable>> GetUsersAsync()
         {
             return _database.Table<UserTable>().ToListAsync();
@@ -33,6 +35,9 @@ namespace SimpleMail.Services
             return _database.InsertAsync(users);
         }
 
+
+
+        //Contact Table
         public Task<List<ContactTable>> GetContactsAsync()
         {
             return _database.Table<ContactTable>().ToListAsync();

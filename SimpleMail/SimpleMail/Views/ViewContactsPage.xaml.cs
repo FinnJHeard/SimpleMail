@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SimpleMail.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +17,8 @@ namespace SimpleMail.Views
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             var contacts = new List<String>();
@@ -25,9 +26,10 @@ namespace SimpleMail.Views
             contacts.Add("Person2");
             contacts.Add("Person3");
             contacts.Add("Person4");
-
-            contactsListView.ItemsSource = contacts;
-
+            contacts.Add("Person4");
+            
+            
+            contactsListView.ItemsSource = await App.Database.GetContactsAsync();
         }
     }
 }

@@ -10,8 +10,8 @@
             <ListView x:Name="contactsListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Title}"
-                              Detail="{Binding Subtitle}"
+                        <TextCell Text="{Binding Forename}"
+                              Detail="{Binding ContactEmail}"
                               TextColor="#f35e20"
                               DetailColor="#503026" />    
                     </DataTemplate>
