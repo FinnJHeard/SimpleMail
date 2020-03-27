@@ -30,6 +30,13 @@ namespace SimpleMail.Services
                             .FirstOrDefaultAsync();
         }
 
+        public Task<UserTable> CheckUserAsync(string emailAddress)
+        {
+            return _database.Table<UserTable>()
+                            .Where(i => i.UserEmail == emailAddress)
+                            .FirstOrDefaultAsync();
+        }
+
         public Task<int> SaveUsersAsync(UserTable users)
         {
             return _database.InsertAsync(users);
@@ -43,13 +50,13 @@ namespace SimpleMail.Services
             return _database.Table<ContactTable>().ToListAsync();
         }
 
-        public Task<ContactTable> GetContactAsync(int id)
+        public Task<List<ContactTable>> GetUserContactsAsync(int id)
         {
             return _database.Table<ContactTable>()
-                            .Where(i => i.ContactID == id)
-                            .FirstOrDefaultAsync();
-        }
+                            .Where(i => i.OwnerID == id)
+                            .ToListAsync();
 
+        }
         public Task<int> SaveContactAsync(ContactTable contacts)
         {
             return _database.InsertAsync(contacts);

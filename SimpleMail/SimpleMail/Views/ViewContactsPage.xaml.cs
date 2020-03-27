@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleMail.Models;
 using SimpleMail.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,8 +13,10 @@ namespace SimpleMail.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewContactsPage : ContentPage
     {
-        public ViewContactsPage()
+        User current_user;
+        public ViewContactsPage(User current_user)
         {
+            this.current_user = current_user;
             InitializeComponent();
         }
 
@@ -29,7 +32,7 @@ namespace SimpleMail.Views
             contacts.Add("Person4");
             
             
-            contactsListView.ItemsSource = await App.Database.GetContactsAsync();
+            contactsListView.ItemsSource = await App.Database.GetUserContactsAsync(current_user.userDB.ID);
         }
     }
 }

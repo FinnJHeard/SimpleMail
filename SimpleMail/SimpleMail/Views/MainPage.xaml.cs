@@ -48,7 +48,7 @@ namespace SimpleMail.Views
 
         async void Contacts_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ContactsPage());
+            await Navigation.PushAsync(new ContactsPage(current_user));
         }
     }
 }

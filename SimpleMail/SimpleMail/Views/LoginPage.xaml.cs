@@ -53,6 +53,18 @@ namespace SimpleMail.Views
                     loading.IsRunning = false;
                     loading.IsVisible = false;
                     loading.IsEnabled = false;
+                    Password.Text = "";
+                    //Database
+                    UserTable userDB = await App.Database.CheckUserAsync(Email.Text);
+                    if (userDB == null)
+                    {
+                        await App.Database.SaveUsersAsync(new UserTable
+                        {
+                            UserEmail = Email.Text,
+                        });
+                    }
+                    userDB = await App.Database.CheckUserAsync(Email.Text);
+                    current_user.userDB = userDB;
                     await Navigation.PushAsync(new MainPage(current_user));
                 }
                 catch

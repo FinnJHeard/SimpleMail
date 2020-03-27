@@ -14,6 +14,7 @@ namespace SimpleMail.Models
         //public int id { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public UserTable userDB { get; set; }
         //public bool valid { get; set; }
 
         async public static Task<User> authenticate(String email, String password)
