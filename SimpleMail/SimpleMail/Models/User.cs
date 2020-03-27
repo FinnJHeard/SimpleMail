@@ -5,6 +5,7 @@ using MailKit.Net.Smtp;
 using MailKit.Net.Pop3;
 using SimpleMail.Services;
 using System.Threading.Tasks;
+using MailKit.Net.Imap;
 
 namespace SimpleMail.Models
 {
@@ -41,11 +42,11 @@ namespace SimpleMail.Models
             return sendingClient;
         }
 
-        async public Task<Pop3Client> getReceivingClient()
+        async public Task<ImapClient> getReceivingClient()
         {
-            Pop3Client receivingClient = new Pop3Client();
+            ImapClient receivingClient = new ImapClient();
 
-            await receivingClient.ConnectAsync("pop.gmail.com", 995, true);
+            await receivingClient.ConnectAsync("imap.gmail.com", 993, true);
             await receivingClient.AuthenticateAsync(StrUtil.removeDomain(email), password);
 
             return receivingClient;

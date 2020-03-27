@@ -17,6 +17,8 @@ namespace SimpleMail.Models
         public string body { get; set; }
         public string bodyHtml { get; set; }
         //public bool sent { get; set; }
+        public string date { get; set;  }
+        public bool loading { get; set; }
 
         // For SENDING an email
         public Email(string senderAddress)
@@ -34,8 +36,32 @@ namespace SimpleMail.Models
         // For displaying a RECEIVED email etc.
         public Email(string content, string subject)
         {
-            this.subject = subject;
-            body = content;
+            loading = true;
+            if (subject == null)
+            {
+                this.subject = "(No Subject)";
+            }
+            else if (subject == "")
+            {
+                this.subject = "(No Subject)";
+            }
+            else
+            {
+                this.subject = subject;
+            }
+            if(body != null)
+            {
+                body = content;
+            }
+            else
+            {
+                body = "(No Body)";
+            }
+        }
+
+        public Email(bool loading)
+        {
+            this.loading = loading;
         }
 
         async public void sendMessage(User user)

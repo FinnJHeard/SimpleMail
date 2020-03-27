@@ -16,14 +16,22 @@ namespace SimpleMail.Views
         User current_user;
         Email emailToDisplay;
 
-        public ViewEmailPage(User current_user, Email emailToDisplay)
+        public ViewEmailPage(User current_user, Email emailToDisplay, bool sentEmail)
         { 
             InitializeComponent();
             
             this.current_user = current_user;
             this.emailToDisplay = emailToDisplay;
-            
-            ViewSender.Text = emailToDisplay.senderAddress;
+            if (sentEmail)
+            {
+                ViewSender.Text = emailToDisplay.recipientAddress;
+                helpText.Text = "This is the email that you sent";
+            }
+            else
+            {
+                ViewSender.Text = emailToDisplay.senderAddress;
+                helpText.Text = "This is the email that you recieved";
+            }
             ViewSubject.Text = emailToDisplay.subject;
             var html = new HtmlWebViewSource();
             if (emailToDisplay.bodyHtml != null)

@@ -43,7 +43,7 @@ namespace SimpleMail.Views
 
         async void View_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new InboxPage(current_user));
+            await Navigation.PushAsync(new FolderPage(current_user));
         }
 
         async void Contacts_Clicked(object sender, EventArgs e)
