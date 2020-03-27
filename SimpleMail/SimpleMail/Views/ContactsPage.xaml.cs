@@ -31,5 +31,10 @@ namespace SimpleMail.Views
             //Push to add contacts page
             await Navigation.PushAsync(new AddContactPage(current_user));
         }
+
+        async void Back_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
     }
 }

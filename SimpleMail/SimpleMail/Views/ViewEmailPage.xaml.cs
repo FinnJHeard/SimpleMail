@@ -50,5 +50,10 @@ namespace SimpleMail.Views
         {
             await Navigation.PopAsync();
         }
+
+        async void Reply_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SendReplyPage(current_user, emailToDisplay));
+        }
     }
 }

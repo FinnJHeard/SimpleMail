@@ -38,7 +38,7 @@ namespace SimpleMail.Views
         async void Send_Clicked(object sender, EventArgs e)
         {
             //email = new Email(current_user.email);
-            await Navigation.PushAsync(new SendEmail(current_user));
+            await Navigation.PushAsync(new SendEmailPage(current_user));
         }
 
         async void View_Clicked(object sender, EventArgs e)

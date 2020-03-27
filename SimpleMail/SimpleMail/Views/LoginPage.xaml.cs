@@ -24,24 +24,21 @@ namespace SimpleMail.Views
 
         async void Login_Clicked(object sender, EventArgs e)
         {
-            bool willSend = true;
+            bool willLogin = true;
 
             if (Email.Text == null)
             {
-                willSend = false;
+                willLogin = false;
                 await DisplayAlert("Email blank", "Enter an email address.", "OK");
             }
 
-            if (willSend)
+            if (willLogin && !await StrUtil.ValidateAddress(Email.Text))
             {
-                if (!await StrUtil.ValidateAddress(Email.Text))
-                {
-                    willSend = false;
-                    await DisplayAlert("Invalid email format", "Email must be of a valid email address format.", "OK");
-                }
+                willLogin = false;
+                await DisplayAlert("Invalid email format", "Email must be of a valid email address format.", "OK");
             }
 
-            if (willSend)
+            if (willLogin)
             {
                 loading.IsRunning = true;
                 loading.IsVisible = true;

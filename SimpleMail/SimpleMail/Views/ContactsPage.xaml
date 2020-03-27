@@ -9,7 +9,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="0.2"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -17,13 +17,14 @@
                 <ColumnDefinition Width="400"/>
             </Grid.ColumnDefinitions>
             
-            <Label Grid.Row="0" Grid.Column="1" TextColor="Black" Text="Contacts" FontSize="60" FontAttributes="Bold"  />
             <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Aqua" Text="View Contacts" FontSize="40" Clicked="View_Clicked" />
-            <Button Grid.Row="2" Grid.Column="0" BackgroundColor="DodgerBlue" Text="Add Contacts" FontSize="40"  Clicked="Add_Clicked" />
+            <Button Grid.Row="1" Grid.Column="0" BackgroundColor="DodgerBlue" Text="Add Contacts" FontSize="40"  Clicked="Add_Clicked" />
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="LightPink" Text="Back" Clicked="Back_Clicked" FontSize="40" />
 
+            <Label Grid.Row="0" Grid.Column="1" TextColor="Black" Text="Contacts" FontSize="60" FontAttributes="Bold"  />
             <Label Grid.Row="0" Grid.Column="1" TextColor="Black" 
                    Text="Press the view button to see your existing contacts" FontSize="30" VerticalOptions="Center" />
-            <Label Grid.Row="2" Grid.Column="1" TextColor="Black"
+            <Label Grid.Row="1" Grid.Column="1" TextColor="Black"
                    Text="Press the add button to add a new person to your contacts" FontSize="30" VerticalOptions="Center" />
         </Grid>
     </ContentPage.Content>

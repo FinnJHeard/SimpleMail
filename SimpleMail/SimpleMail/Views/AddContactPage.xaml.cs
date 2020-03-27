@@ -21,9 +21,9 @@ namespace SimpleMail.Views
             InitializeComponent();
         }
 
-        private void Back_Clicked(object sender, EventArgs e)
+        private async void Back_Clicked(object sender, EventArgs e)
         {
-            
+            await Navigation.PopAsync();
         }
 
         async private void Confirm_Clicked(object sender, EventArgs e)

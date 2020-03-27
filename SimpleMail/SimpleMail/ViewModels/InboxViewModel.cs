@@ -53,6 +53,8 @@ namespace SimpleMail.ViewModels
                 {
                     var message = await inbox.GetMessageAsync(i);
                     var emailMessage = new Email(message.TextBody, message.Subject);
+                    
+                    emailMessage.message = message;
                     emailMessage.bodyHtml = message.HtmlBody;
                     emailMessage.date = message.Date.ToString("dd/MM/yyyy", new System.Globalization.CultureInfo("en-GB"));
 

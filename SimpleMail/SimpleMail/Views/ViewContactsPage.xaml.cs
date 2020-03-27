@@ -7,6 +7,7 @@ using SimpleMail.Models;
 using SimpleMail.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SimpleMail.ViewModels;
 
 namespace SimpleMail.Views
 {
@@ -18,21 +19,12 @@ namespace SimpleMail.Views
         {
             this.current_user = current_user;
             InitializeComponent();
+            BindingContext = new ViewContactsViewModel(current_user);
         }
 
-
-        protected override async void OnAppearing()
+        async void Back_Clicked(object sender, EventArgs e)
         {
-            base.OnAppearing();
-            var contacts = new List<String>();
-            contacts.Add("Person1");
-            contacts.Add("Person2");
-            contacts.Add("Person3");
-            contacts.Add("Person4");
-            contacts.Add("Person4");
-            
-            
-            contactsListView.ItemsSource = await App.Database.GetUserContactsAsync(current_user.userDB.ID);
+            await Navigation.PopAsync();
         }
     }
 }
