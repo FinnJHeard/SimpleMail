@@ -10,6 +10,8 @@ using Xamarin.Forms.Xaml;
 using SimpleMail.Models;
 using SimpleMail.Services;
 using SimpleMail.ViewModels;
+using System.IO;
+using System.Reflection;
 
 namespace SimpleMail.Views
 {
@@ -45,7 +47,9 @@ namespace SimpleMail.Views
             {
                 await Task.Delay(100);
             }
-            AddedRecipients.Text = recipientsList.str;
+            Xamarin.Essentials.MainThread.BeginInvokeOnMainThread(() => {
+                AddedRecipients.Text = recipientsList.str;
+            });
             recipientsList.flag = true;
         }
 
@@ -86,9 +90,8 @@ namespace SimpleMail.Views
                     addedAddresses.Add(Recipient.Text);
                 }
 
-                //TODO: fix here - and find & fix where this is referenced
-                //emailToSend.recipientAddress = Recipient.Text; //TODO: remove - was previous version
-                emailToSend.recipientAddress = "simple321mail@gmail.com"; //TODO: remove - is in for testing only
+                emailToSend.recipientAddress = "";
+                //emailToSend.recipientAddress = "simple321mail@gmail.com";
 
                 emailToSend.recipientAddresses = addedAddresses;
                 
@@ -99,22 +102,27 @@ namespace SimpleMail.Views
                 {
                     emailToSend.sendMessage(current_user);
 
-                    Console.WriteLine("Email sent"); //test
-
-                    //Woosh sound here
+                    var whoosh = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                    whoosh.Load(GetStreamFromFile("Whoosh.mp3"));
+                    whoosh.Play();
 
                     await DisplayAlert("Success", "Email sent successfully", "OK");
 
                     await Navigation.PopAsync();
-                    Console.WriteLine("Gone back a page"); //test
-
                 }
                 catch (Exception exception)
                 {
-                    await DisplayAlert("Failed", "Email ", "OK");
+                    await DisplayAlert("Failed", "Email error", "OK");
                 }
             }
 
+        }
+
+        private Stream GetStreamFromFile(string v)
+        {
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            Stream audioStream = assembly.GetManifestResourceStream("SimpleMail.Services." + v);
+            return audioStream;
         }
 
         // For validation when: sending without having added, only having added, and having added and having an additional

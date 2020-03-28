@@ -28,8 +28,13 @@
 
   <ItemGroup>
     <None Remove="Models\NewFile1.txt" />
+    <None Remove="Services\Whoosh.mp3" />
     <None Remove="Views\NewFile1.txt" />
     <None Remove="Views\NewFile2.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Services\Whoosh.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +43,7 @@
     <PackageReference Include="MimeKit" Version="2.5.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
     <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />

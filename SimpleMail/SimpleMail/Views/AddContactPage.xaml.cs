@@ -37,6 +37,8 @@ namespace SimpleMail.Views
                     Surname = LastName.Text,
                     ContactEmail = EmailAddress.Text,
                 });
+                await DisplayAlert("Success", "Contact added successfully", "OK");
+                await Navigation.PopAsync();
             }
         }
     }

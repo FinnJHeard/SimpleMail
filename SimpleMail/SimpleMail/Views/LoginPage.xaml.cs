@@ -20,6 +20,8 @@ namespace SimpleMail.Views
         public LoginPage()
         {
             InitializeComponent();
+            Email.Text = "simple321mail@gmail.com";
+            Password.Text = "ipgroup123";
         }
 
         async void Login_Clicked(object sender, EventArgs e)
