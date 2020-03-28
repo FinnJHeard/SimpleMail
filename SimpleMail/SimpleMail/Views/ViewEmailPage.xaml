@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SimpleMail.Views.ViewEmailPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" x:Name="ViewSender" VerticalOptions="Center" FontSize="40" Grid.ColumnSpan="2" />
+            <Label Grid.Row="1" Grid.Column="0" x:Name="ViewSubject" VerticalOptions="Center" FontSize="40" Grid.ColumnSpan="2" />
+            <Button Grid.Row="3" Grid.Column="0" BackgroundColor="LightPink" Text="Back" Clicked="Back_Clicked" FontSize="40" />
+            <Button Grid.Row="3" Grid.Column="1" BackgroundColor="SpringGreen" Text="Reply" Clicked="Reply_Clicked" FontSize="40" />
+
+            <Label Grid.Row="0" Grid.Column="2" Text="View Email" FontSize="60" FontAttributes="Bold" TextColor="Black" />
+            <Label Grid.Row="1" Grid.Column="2" VerticalOptions="Center" TextColor="Black"
+                   Text="This is the email" FontSize="30" x:Name="helpText"/>
+            <Label Grid.Row="3" Grid.Column="2" VerticalOptions="Center" TextColor="Black"
+                   Text="Press the back button to return to the previous page" FontSize ="30"/>
+            <ScrollView x:Name="scrollView" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                <WebView x:Name="webView" HeightRequest="3000"/>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

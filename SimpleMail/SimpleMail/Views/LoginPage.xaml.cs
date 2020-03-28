@@ -24,23 +24,54 @@ namespace SimpleMail.Views
 
         async void Login_Clicked(object sender, EventArgs e)
         {
-			while(true)
-			{
-				//Call check login credentials
-				try
-				{
-				//Create new user
-					current_user = await new User(Email.Text, Password.Text);
-					break;
-				}
-				catch(Exception e)
-				{
-				//Do authentification (inside user object)
-					
-				}
-			}
+            bool willLogin = true;
 
-            await Navigation.PushAsync(new MainPage(current_user));
+            if (Email.Text == null)
+            {
+                willLogin = false;
+                await DisplayAlert("Email blank", "Enter an email address.", "OK");
+            }
+
+            if (willLogin && !await StrUtil.ValidateAddress(Email.Text))
+            {
+                willLogin = false;
+                await DisplayAlert("Invalid email format", "Email must be of a valid email address format.", "OK");
+            }
+
+            if (willLogin)
+            {
+                loading.IsRunning = true;
+                loading.IsVisible = true;
+                loading.IsEnabled = true;
+
+                try
+                {
+                    current_user = await User.authenticate(Email.Text, Password.Text);
+                    loading.IsRunning = false;
+                    loading.IsVisible = false;
+                    loading.IsEnabled = false;
+                    Password.Text = "";
+                    //Database
+                    UserTable userDB = await App.Database.CheckUserAsync(Email.Text);
+                    if (userDB == null)
+                    {
+                        await App.Database.SaveUsersAsync(new UserTable
+                        {
+                            UserEmail = Email.Text,
+                        });
+                    }
+                    userDB = await App.Database.CheckUserAsync(Email.Text);
+                    current_user.userDB = userDB;
+                    await Navigation.PushAsync(new MainPage(current_user));
+                }
+                catch
+                {
+                    loading.IsRunning = false;
+                    loading.IsVisible = false;
+                    loading.IsEnabled = false;
+                    await DisplayAlert("Login failed", "Please try again", "OK");
+                }
+            }
         }
     }
 }

@@ -12,12 +12,11 @@ namespace SimpleMail.Services
         public int ContactID { get; set; }
 
         [ForeignKey(typeof(UserTable))]
-        public string OwnerID { get; set; }
+        public int OwnerID { get; set; }
 
-        public string Forname { get; set; }
+        public string Forename { get; set; }
         public string Surname { get; set; }
         public string ContactEmail { get; set; }
-        public string Description { get; set; }
 
         [ManyToOne]
         public UserTable UserTable { get; set; }

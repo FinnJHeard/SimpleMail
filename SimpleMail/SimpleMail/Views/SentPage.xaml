@@ -4,13 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SimpleMail.Views.InboxPage">
+             x:Class="SimpleMail.Views.SentPage">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="0.3*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -39,7 +39,7 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding date}" TextColor="Green" FontAttributes="Bold" FontSize="Large"/>
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding senderName}" TextColor="Red" FontAttributes="Bold" FontSize="Large"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding recipientName}" TextColor="Red" FontAttributes="Bold" FontSize="Large"/>
                                     <Label Grid.Row="0" Grid.Column="2" Text="{Binding subject}" FontSize="Large"/>
                                     <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding body}" FontSize="Small"/>
                                 </Grid>
@@ -64,8 +64,8 @@
             <Button Grid.Row="0" Grid.Column="1" BackgroundColor="Azure" Text="/\" Command="{Binding UpCommand}" CommandParameter="{Binding inboxPage}" FontSize="40" />
             <Button Grid.Row="1" Grid.Column="1" BackgroundColor="Azure" Text="\/" Command="{Binding DownCommand}" CommandParameter="{Binding inboxPage}" FontSize="40" />
 
-            <Label Grid.Column="2" Grid.Row="0" Text="View Inbox" FontSize="60" FontAttributes="Bold" TextColor="Black" x:Name="helpTitle"/>
-            <Label Grid.Column="2" Grid.Row="1" Text="Your most recently recieved emails are shown here" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
+            <Label Grid.Column="2" Grid.Row="0" Text="View Sent" FontSize="60" FontAttributes="Bold" TextColor="Black"/>
+            <Label Grid.Column="2" Grid.Row="1" Text="Your most recently sent emails are shown here" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
             <Label Grid.Column="2" Grid.Row="2" Text="Press the back button to return to the main menu" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
         </Grid>
     </ContentPage.Content>

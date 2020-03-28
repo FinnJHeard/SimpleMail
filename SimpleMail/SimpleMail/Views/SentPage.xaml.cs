@@ -18,21 +18,17 @@ using Xamarin.Forms.Xaml;
 namespace SimpleMail.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class InboxPage : ContentPage
+    public partial class SentPage : ContentPage
     {
 
         User current_user;
         Email selectedEmail = null;
         Email tappedEmail = null;
 
-        public InboxPage(User current_user, int folderType) 
+        public SentPage(User current_user, int folderType)
         {
             InitializeComponent();
             this.current_user = current_user;
-            if(folderType == 2)
-            {
-                helpTitle.Text = "View Spam";
-            }
             BindingContext = new InboxViewModel(current_user, folderType);
         }
 
@@ -44,9 +40,9 @@ namespace SimpleMail.Views
         async private void Tapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             tappedEmail = e.Item as Email;
-            if(tappedEmail != null && tappedEmail == selectedEmail)
+            if (tappedEmail != null && tappedEmail == selectedEmail)
             {
-                await Navigation.PushAsync(new ViewEmailPage(current_user, tappedEmail, false));
+                await Navigation.PushAsync(new ViewEmailPage(current_user, tappedEmail, true));
             }
         }
 

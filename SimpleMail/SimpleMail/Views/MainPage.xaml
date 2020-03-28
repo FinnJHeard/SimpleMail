@@ -11,7 +11,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -19,8 +19,8 @@
             </Grid.ColumnDefinitions>
 
             <Label x:Name="label_test"  Text="Main Menu"/>
-            <Button Grid.Column="0" Grid.Row="1" BackgroundColor="Aqua" Text="View Emails" Clicked="View_Clicked" FontSize="30" />
             <Button Grid.Column="0" Grid.Row="0" BackgroundColor="DodgerBlue" Text="Send Email" Clicked="Send_Clicked" FontSize="30" />
+            <Button Grid.Column="0" Grid.Row="1" BackgroundColor="Aqua" Text="View Emails" Clicked="View_Clicked" FontSize="30" />
             <Button Grid.Column="0" Grid.Row="2" BackgroundColor="DarkTurquoise" Text="Contacts" Clicked="Contacts_Clicked" FontSize="30" />
             <Button Grid.Column="0" Grid.Row="3" BackgroundColor="LightPink" Text="Logout" Clicked="Logout_Clicked" FontSize="30" />
 

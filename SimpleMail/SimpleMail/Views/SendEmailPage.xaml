@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SimpleMail.Views.SendEmailPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.35*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" x:Name="AddedRecipients" TextColor="Black" Text="The list of people you are sending the email to will appear here" FontSize="30" Grid.ColumnSpan="2"/>
+            <Button Grid.Row="1" Grid.Column="2" BackgroundColor="DodgerBlue" Text="Add Contact" Clicked="Add_Contact_Clicked" FontSize="40" />            
+            <Entry Grid.Row="2" Grid.Column="0" x:Name="Recipient" Placeholder ="Recipient" FontSize="30" Grid.ColumnSpan="2" />
+            <Button Grid.Row="2" Grid.Column="2" BackgroundColor="DodgerBlue" Text="Add" Clicked="Add_Clicked" FontSize="40" />
+            <Entry Grid.Row="3" Grid.Column="0" x:Name="Subject" Placeholder ="Subject" FontSize="30" Grid.ColumnSpan="3" />
+            <Editor Grid.Row="4" Grid.Column="0" x:Name="Body" Placeholder ="Body" FontSize="30" Grid.ColumnSpan="3" />
+            <Button Grid.Row="5" Grid.Column="0" BackgroundColor="LightPink" Text="Back" Clicked="Back_Clicked" FontSize="40" />
+            <Button Grid.Row="5" Grid.Column="1" BackgroundColor="SpringGreen" Text="Send" Clicked="Send_Clicked" FontSize="40" Grid.ColumnSpan="2"/>
+
+            <Label Grid.Row="0" Grid.Column="3" TextColor="Black"
+                   Text="Send Email" FontSize="60" FontAttributes="Bold"/>
+            <Label Grid.Row="2" Grid.Column="3" TextColor="Black"
+                   Text="Use this box to manually add an email address" FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Row="3" Grid.Column="3" TextColor="Black"
+                   Text="Please type the subject of the email here." FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Row="4" Grid.Column="3" TextColor="Black"
+                   Text="Type the body of the email here." FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Row="5" Grid.Column="3" TextColor="Black"
+                   Text="Tap Send to send the email and return to the main menu." FontSize="30" VerticalOptions="Center"/>
+
+            <Label Grid.Row="1" Grid.Column="3" TextColor="Black" FontSize="30" VerticalTextAlignment="Center"
+                   Text="Tap the add contacts button to add a recipient from your contacts list" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

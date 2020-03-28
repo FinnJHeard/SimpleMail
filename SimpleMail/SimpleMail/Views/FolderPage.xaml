@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SimpleMail.Views.FolderPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="label_test"  Text="Main Menu"/>
+            <Button Grid.Column="0" Grid.Row="0" BackgroundColor="DodgerBlue" Text="Inbox" Clicked="Inbox_Clicked" FontSize="30" />
+            <Button Grid.Column="0" Grid.Row="1" BackgroundColor="Aqua" Text="Sent" Clicked="Sent_Clicked" FontSize="30" />
+            <Button Grid.Column="0" Grid.Row="2" BackgroundColor="DarkTurquoise" Text="Spam" Clicked="Spam_Clicked" FontSize="30" />
+            <Button Grid.Column="0" Grid.Row="3" BackgroundColor="LightPink" Text="Back" Clicked="Back_Clicked" FontSize="30" />
+
+            <Label Grid.Column="1" Grid.Row="0" TextColor="Black" Text="View Emails" FontSize="60" FontAttributes="Bold"/>
+            <Label Grid.Column="1" Grid.Row="0" TextColor="Black" FontSize="30"
+                   Text="&#x0a;Tap the inbox button to see a list of emails that you have received recently" VerticalOptions="Center"/>
+            <Label Grid.Column="1" Grid.Row="1" TextColor="Black" Text="Tap the sent button to see a list of emails that you have recently sent" FontSize="30" VerticalOptions="Center"/>
+            <Label Grid.Column="1" Grid.Row="2" TextColor="Black" Text="Tap the spam button to see a list of emails that have been marked as spam" FontSize="30" VerticalOptions="Center"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

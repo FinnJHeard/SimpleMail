@@ -6,35 +6,49 @@
              mc:Ignorable="d"
              x:Class="SimpleMail.Views.LoginPage">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="0.4*"/>
-                <RowDefinition Height="0.4*"/>
-                <RowDefinition Height="0.4*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <RelativeLayout>
+            <Grid 
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="400"/>
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
 
-            <Image Source="simpleMail.png" BackgroundColor="LightSkyBlue" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+                <Image Source="simpleMail.png" BackgroundColor="LightSkyBlue" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
 
-            <Entry Grid.Column="0" Grid.Row="1" x:Name="Email" Placeholder="Email Address"
-                   TextColor="Black" FontSize="40" Grid.ColumnSpan="2"/>
-            <Entry Grid.Column ="0" Grid.Row="2" x:Name="Password" IsPassword="true" 
-                   TextColor="Black" Placeholder="Password" FontSize="40" Grid.ColumnSpan="2" />
-            
-            <Button BackgroundColor="SpringGreen" Grid.Column ="0" Grid.Row="4" Text="Login" FontSize="30" TextColor="Black" Clicked="Login_Clicked" Grid.ColumnSpan="2" />
+                <Entry Grid.Column="0" Grid.Row="1" x:Name="Email" Placeholder="Email Address"
+                       TextColor="Black" FontSize="40" Grid.ColumnSpan="2"/>
+                <Entry Grid.Column ="0" Grid.Row="2" x:Name="Password" IsPassword="true" 
+                       TextColor="Black" Placeholder="Password" FontSize="40" Grid.ColumnSpan="2" />
 
-            <Label Grid.Column="2" Grid.Row="0" Text="Login" FontSize="60" FontAttributes="Bold" TextColor="Black"/>
-            <Label Grid.Column="2" Grid.Row="1" Text="Please enter your email address in the first box" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
-            <Label Grid.Column="2" Grid.Row="2" Text="Then enter your password in the second box" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
-            <Label Grid.Column="2" Grid.Row="4" Text="Press the login button to move to the next page" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
+                <Button BackgroundColor="SpringGreen" Grid.Column ="0" Grid.Row="4" Text="Login" FontSize="30" TextColor="Black" Clicked="Login_Clicked" Grid.ColumnSpan="2" />
 
-        </Grid>
+                <Label Grid.Column="2" Grid.Row="0" Text="Login" FontSize="60" FontAttributes="Bold" TextColor="Black"/>
+                <Label Grid.Column="2" Grid.Row="1" Text="Please enter your email address in the first box" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
+                <Label Grid.Column="2" Grid.Row="2" Text="Then enter your password in the second box" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
+                <Label Grid.Column="2" Grid.Row="4" Text="Press the login button to move to the next page" FontSize="30" TextColor="Black" VerticalOptions="Center"/>
+
+            </Grid>
+            <ActivityIndicator x:Name="loading"  
+                IsRunning="False"  
+                IsEnabled="False"  
+                IsVisible="False"  
+                Color="Blue"  
+                BackgroundColor="Transparent"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25,Constant=0}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25, Constant=0}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.5,Constant=0}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5,Constant=0}"/>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
