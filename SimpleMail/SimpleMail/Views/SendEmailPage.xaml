@@ -8,11 +8,11 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.35*"/>
+                <RowDefinition Height="0.15*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -21,7 +21,7 @@
                 <ColumnDefinition Width="400"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" x:Name="AddedRecipients" TextColor="Black" Text="Added addresses will appear here." FontSize="20" Grid.ColumnSpan="2"/>
+            <Label Grid.Row="0" Grid.Column="0" x:Name="AddedRecipients" TextColor="Black" Text="Added addresses will appear here." FontSize="30" Grid.ColumnSpan="2"/>
             <Button Grid.Row="0" Grid.Column="2" BackgroundColor="DodgerBlue" Text="Add Contact" Clicked="Add_Contact_Clicked" FontSize="40" />            
             <Entry Grid.Row="1" Grid.Column="0" x:Name="Recipient" Placeholder ="Recipient" FontSize="30" Grid.ColumnSpan="2" />
             <Button Grid.Row="1" Grid.Column="2" BackgroundColor="DodgerBlue" Text="Add" Clicked="Add_Clicked" FontSize="40" />

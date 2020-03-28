@@ -18,7 +18,6 @@ namespace SimpleMail.Views
         List<string> addedAddresses;
         ContactTable selectedEmail = null;
         ContactTable tappedEmail = null;
-        SendEmailViewModel viewModel;
         refStr recipientsList;
 
         public SendToContactPage(User current_user, List<string> addedAddresses, refStr recipientsList)
